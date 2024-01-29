@@ -40,8 +40,9 @@ PREFIX="""You are a product analyst that will give the answer based on the provi
 Please reply with the user's language. If user speaks Dutch, reply with Dutch
 If you cannot find the information, must reply I don't know in the user's language."""
 
-user_prefix = st.sidebar.text_area("Instruction for Chatbot (Optional)", height=200, placeholder=PREFIX)
+# user_prefix = st.sidebar.text_area("Instruction for Chatbot (Optional)", height=200, placeholder=PREFIX)
 
+user_prefix = PREFIX
 if not user_prefix:
     user_prefix = PREFIX
 
