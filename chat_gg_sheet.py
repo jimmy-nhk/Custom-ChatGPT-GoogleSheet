@@ -24,10 +24,9 @@ st.title("Chat with Google Sheet data")
 # openai_api_key="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"
 
 # if not openai_api_key:
-openai_api_key = st.secrets["OPENAI_API_KEY"]
+# openai_api_key = st.secrets["OPENAI_API_KEY"]
     # st.info("Enter an OpenAI API Key to continue")
     # st.stop()
-st.write("DB username:", st.secrets["OPENAI_API_KEY"])
 
 # url_googlesheet = st.sidebar.text_input("Enter Google Sheet URL")
 
