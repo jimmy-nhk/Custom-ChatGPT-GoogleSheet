@@ -87,7 +87,7 @@ def create_models():
     embedding_function = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
 
     llm = ChatOpenAI(
-            temperature=0.5, model="gpt-4-0125-preview", openai_api_key=openai_api_key, verbose=True
+            temperature=0.5, model="gpt-4-0125-preview", openai_api_key=st.secrets["OPENAI_API_KEY"], verbose=True
         )
     return llm, embedding_function
 
