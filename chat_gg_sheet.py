@@ -20,25 +20,22 @@ st.set_page_config(page_title="Chat with Google Sheet data", page_icon="🦜")
 st.title("Chat with Google Sheet data")
 
 # Sidebar check openai key
-openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
+# openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
+openai_api_key="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"
 
 if not openai_api_key:
     st.info("Enter an OpenAI API Key to continue")
     st.stop()
 
-url_googlesheet = st.sidebar.text_input("Enter Google Sheet URL")
+# url_googlesheet = st.sidebar.text_input("Enter Google Sheet URL")
 
 url = 'https://docs.google.com/spreadsheets/d/1OReP9PTU8p6VNrGRX1ePl0D6h9mhDMy1bO8B8pRjhzM/edit?usp=sharing'
 
+url_googlesheet = url
 if not url_googlesheet:
     url_googlesheet = url
 
 # define gg sheet url and prompt
-PREFIX="""You are a product analyst with the information given in the sheet below. 
-You will give the answer based on the information in the sheet only. 
-If you cannot find the information, say I don't know.
-Please reply with the user's language. If user speaks Dutch, reply with Dutch"""
-
 PREFIX="""You are a product analyst that will give the answer based on the provided context only. 
 Please reply with the user's language. If user speaks Dutch, reply with Dutch
 If you cannot find the information, must reply I don't know in the user's language."""
