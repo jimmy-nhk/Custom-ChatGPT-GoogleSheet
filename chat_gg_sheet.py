@@ -16,7 +16,7 @@ import re
 
 
 # Opening Session
-st.set_page_config(page_title="LangChain: Chat with pandas DataFrame", page_icon="🦜")
+st.set_page_config(page_title="Chat with Google Sheet data", page_icon="🦜")
 st.title("Chat with Google Sheet data")
 
 # Sidebar check openai key
