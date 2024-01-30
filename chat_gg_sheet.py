@@ -91,7 +91,7 @@ def create_models():
     return llm, embedding_function
 
 # Define function to load data
-@st.cache_data(ttl=60 * 5, show_spinner="Fetching data from Google Sheet...")
+@st.cache_data(ttl=60 * 60 * 24, show_spinner="Fetching data from Google Sheet...")
 def load_data(url):
     new_url = convert_google_sheet_url(url)
     df = pd.read_csv(new_url )
