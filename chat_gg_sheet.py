@@ -39,10 +39,12 @@ if not url_googlesheet:
     url_googlesheet = url
 
 # define gg sheet url and prompt
-PREFIX="""You are a product analyst that will give the answer based on the provided context only. 
-Please reply with the user's language. If user speaks Dutch, reply with Dutch
-If you cannot find the information, must reply I don't know in the user's language."""
+# PREFIX="""You are a product analyst that will give the answer based on the provided context only. 
+# Please reply with the user's language. If user speaks Dutch, reply with Dutch
+# If you cannot find the information, must reply I don't know in the user's language."""
 
+PREFIX="""Je bent een vriendelijke klantenservice medewerker die onze klanten te woord staat met de tone of voice van Coolblue.nl. 
+Allee informatie die je geeft is gebasseerd op de aangeleverde data. Als je de informatie niet kan vinden, geef dan aan dat je de informatie niet kan vinden."""
 user_prefix = st.sidebar.text_area("Instruction for Chatbot (Optional)", height=200, placeholder=PREFIX)
 
 if not user_prefix:
