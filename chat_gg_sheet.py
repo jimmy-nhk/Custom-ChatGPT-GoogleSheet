@@ -13,7 +13,9 @@ import streamlit as st
 import pandas as pd
 import os
 import re
+from streamlit_gsheets import GSheetsConnection
 
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 # Opening Session
 st.set_page_config(page_title="Chat with Google Sheet data", page_icon="🦜")
@@ -90,11 +92,20 @@ def create_models():
         )
     return llm, embedding_function
 
+
+# Create a connection object.
+conn = st.connection("gsheets", type=GSheetsConnection)
+
+
+
 # Define function to load data
 @st.cache_data(ttl=60 * 60 * 24, show_spinner="Fetching data from Google Sheet...")
 def load_data(url):
-    new_url = convert_google_sheet_url(url)
-    df = pd.read_csv(new_url )
+    # new_url = convert_google_sheet_url(url)
+    # df = pd.read_csv(new_url )
+    df = conn.read(
+            ttl=60 * 60 * 24,
+        )
     df['text'] = df['Question'] + ': ' + df['Answer']
 
     loader = DataFrameLoader(df, page_content_column='text')
@@ -136,7 +147,8 @@ def create_agent(url):
 
 # Display the Clear Conversation History button
 if "messages" not in st.session_state or st.sidebar.button("Clear conversation history"):
-    st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
+    st.session_state["messages"] = [{"role": "assistant", "content": """Ask me anything about the sheet?
+                                     \n*My data is updated every 24 hours."""}]
 
 
 # Create qa_chain
